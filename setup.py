@@ -5,5 +5,5 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="characterbert", # Replace with your own username
-    packages=find_packages(),
+    packages=setuptools.find_packages(),
 )
