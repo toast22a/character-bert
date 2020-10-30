@@ -5,5 +5,6 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="characterbert", # Replace with your own username
-    packages=["."],
+    package_dir={"": "src"},
+    packages=setuptools.find_packages("src"),
 )
