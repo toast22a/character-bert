@@ -6,7 +6,7 @@ import torch
 from torch import nn
 from transformers.modeling_bert import BertPreTrainedModel, BertEncoder, BertPooler
 
-from modeling.character_cnn import CharacterCNN
+from .character_cnn import CharacterCNN
 
 
 class BertCharacterEmbeddings(nn.Module):
@@ -197,7 +197,7 @@ class CharacterBertModel(BertPreTrainedModel):
 
 if __name__ == "__main__":
     import logging
-    from download import download_model
+    from ..download import download_model
     logging.basicConfig(level=logging.INFO)
 
     download_model('medical_character_bert')
