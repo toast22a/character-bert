@@ -4,7 +4,7 @@
 """ Defines the main CharacterBERT PyTorch class. """
 import torch
 from torch import nn
-from transformers.modeling_bert import BertPreTrainedModel, BertEncoder, BertPooler
+from transformers.modeling_bert import BertPreTrainedModel, BertEncoder, BertPooler, BertForSequenceClassification
 
 from .character_cnn import CharacterCNN
 
@@ -194,6 +194,13 @@ class CharacterBertModel(BertPreTrainedModel):
         ]  # add hidden_states and attentions if they are here
         return outputs  # sequence_output, pooled_output, (hidden_states), (attentions)
 
+class CharacterBertForSequenceClassification(BertForSequenceClassification):
+    """ CharacterBertModel with a sequence classification/regression head on top. """
+    def __init__(self, config):
+        super().__init__(config)
+
+        self.bert = CharacterBertModel(config)
+        self.init_weights()
 
 if __name__ == "__main__":
     import logging
